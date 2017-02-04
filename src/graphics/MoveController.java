@@ -5,10 +5,91 @@
  */
 package graphics;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
 /**
  *
  * @author General
  */
-public class MoveController {
+public class MoveController implements KeyListener{
+
+    boolean up, down, left, right;
+    int kcode;
+    
+    public MoveController(){
+
+        
+        up = false;
+        down = false;
+        left = false;
+        right =  false;
+        
+    }
+    
+    
+    public int[] getVector(){
+        int[] vec = new int[2];
+        if(left)
+            vec[0]--;
+        if(right)
+            vec[0]++;
+        if(up)
+            vec[1]--;
+        if(down)
+            vec[1]++;
+        return vec;
+    }
+    
+    @Override
+    public void keyTyped(KeyEvent ke) {
+      
+    }
+
+    @Override
+    public void keyPressed(KeyEvent ke) {
+        
+        int k = ke.getKeyCode();
+    
+        if(k==37||k==65){
+            left = true;
+            kcode = k;
+        }
+        else if(k==38||k==87){
+            up = true;
+            kcode = k;
+        }
+        else if(k==39||k==68){
+            right = true;
+            kcode = k;
+        }
+        else if(k==40||k==83){
+            down = true;
+            kcode = k;
+        }
+      
+    }
+
+    @Override
+    public void keyReleased(KeyEvent ke) {
+        int k = ke.getKeyCode();
+    
+        if(k==37||k==65){
+            left = false;
+            kcode = k;
+        }
+        else if(k==38||k==87){
+            up = false;
+            kcode = k;
+        }
+        else if(k==39||k==68){
+            right = false;
+            kcode = k;
+        }
+        else if(k==40||k==83){
+            down = false;
+            kcode = k;
+        }
+    }
     
 }

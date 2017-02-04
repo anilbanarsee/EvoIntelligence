@@ -41,7 +41,9 @@ public class Entity extends EvoObject {
         if(hunger<=0){
             return false;
         }
-        hunger--;
+        //hunger--;
+        location[0]++;
+        location[1]--;
         return true;
         
     }
